@@ -5,6 +5,14 @@ manifest:
   version: 1.0
 
 automations:
+  add_comment:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment:|
+            "hello world: {{ "hello world" | capture(regex=r/he.+o") }}"
   label_prs_without_tests:
     if:
       - {{ files | match(regex=r/(unit)/) | nope }}
